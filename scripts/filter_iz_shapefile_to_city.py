@@ -45,37 +45,8 @@ with open(os.path.join(dir, 'ogr.sql'), 'w') as fd:
 
 local_path = os.path.realpath(dir)
 docker_path = '/data'
-print(f'docker run --rm -v {local_path}:{docker_path} osgeo/gdal:ubuntu-small-latest ogr2ogr -where @/data/ogr.sql "/data/{cityname}_IZ.shp" /data/SG_IntermediateZone_Bdry_2011.shp')
 
-* 'Aberdeen City'
-* 'Aberdeenshire'
-* 'Angus'
-* 'Argyll and Bute'
-* 'City of Edinburgh'
-* 'Clackmannanshire'
-* 'Dumfries and Galloway'
-* 'Dundee City'
-* 'East Ayrshire'
-* 'East Dunbartonshire'
-* 'East Lothian'
-* 'East Renfrewshire'
-* 'Falkirk'
-* 'Fife'
-* 'Glasgow City'
-* 'Highland'
-* 'Inverclyde'
-* 'Midlothian'
-* 'Moray'
-* 'Na h-Eileanan Siar'
-* 'North Ayrshire'
-* 'North Lanarkshire'
-* 'Orkney Islands'
-* 'Perth and Kinross'
-* 'Renfrewshire'
-* 'Scottish Borders'
-* 'Shetland Islands'
-* 'South Ayrshire'
-* 'South Lanarkshire'
-* 'Stirling'
-* 'West Dunbartonshire'
-* 'West Lothian'
+cmd = f'docker run --rm -v {local_path}:{docker_path} osgeo/gdal:ubuntu-small-latest ogr2ogr -where @/data/ogr.sql "/data/{cityname}_IZ.shp" /data/SG_IntermediateZone_Bdry_2011.shp'
+
+print('Running: %s' % cmd)
+os.system(cmd)
