@@ -25,7 +25,7 @@ Run `scripts/scrape_phs_covid.py` to scrape the data - three regions are defined
 
 ## Example
 
-![Glasgow cases per 100k](image/glasgow_IZ_colour_by_casesPer100k-crop.png)
+![Glasgow cases per 100k](images/glasgow_IZ_colour_by_casesPer100k-crop.png)
 
 ## List of Regions
 
