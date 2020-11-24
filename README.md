@@ -16,7 +16,8 @@ Run `scripts/scrape_phs_covid.py` to scrape the data - three regions are defined
 
 ## Plotting the data
 
-* (Split the shapefile of intermediate zones into separate files, one for each local authority)
+* Split the shapefile of intermediate zones into separate files, one for each local authority
+ using the `scripts/filter_iz_shapefile_to_city.sh` script (for all of them) or `scripts/filter_iz_shapefile_to_city.py` (for just a single one)
 * Load the shapefile of intermediate zones into QGIS
 * Load the CSV file as a vector layer
 * Open the properties of the shapefile layer and in the Join tab make a join with the CSV layer, using the IZ name as the join key
@@ -29,7 +30,54 @@ Run `scripts/scrape_phs_covid.py` to scrape the data - three regions are defined
 
 ## List of Regions
 
-See the dashboard for the list of regions.
+* 'Aberdeen City'
+* 'Aberdeenshire'
+* 'Angus'
+* 'Argyll and Bute'
+* 'City of Edinburgh'
+* 'Clackmannanshire'
+* 'Dumfries and Galloway'
+* 'Dundee City'
+* 'East Ayrshire'
+* 'East Dunbartonshire'
+* 'East Lothian'
+* 'East Renfrewshire'
+* 'Falkirk'
+* 'Fife'
+* 'Glasgow City'
+* 'Highland'
+* 'Inverclyde'
+* 'Midlothian'
+* 'Moray'
+* 'Na h-Eileanan Siar'
+* 'North Ayrshire'
+* 'North Lanarkshire'
+* 'Orkney Islands'
+* 'Perth and Kinross'
+* 'Renfrewshire'
+* 'Scottish Borders'
+* 'Shetland Islands'
+* 'South Ayrshire'
+* 'South Lanarkshire'
+* 'Stirling'
+* 'West Dunbartonshire'
+* 'West Lothian'
+
+## Shapefiles
+
+Download Intermediate Zone boundaries from
+
+https://www.opendata.nhs.scot/km/dataset/geography-codes-and-labels/resource/e3e885cc-2530-4b3c-bead-9eda9782264f?inner_span=True
+
+## Five miles
+
+You are allowed to travel five miles from the boundary of your local authority.
+
+* Open the shapefile for your local authority (not whole Scotland!) in QGIS
+* Vector | Geoprocessing tools | Buffer - use 5 and select Miles
+* Vector | Geoprocessing tools | Dissolve - to get a single shape
+* Change the shape to be transparent
+* As above use the OSM map underneath
 
 ## To do
 
