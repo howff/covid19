@@ -23,6 +23,10 @@ Run `scripts/scrape_phs_covid.py` to scrape the data - three regions are defined
 * Open the layer styling and change from point to categorical, select the newly joined attribute Per100k, change colour, make transparent
 * Install the QuickWebMap plugin and use the Web menu to add OSM mapping underneath
 
+## Example
+
+![Glasgow cases per 100k](image/glasgow_IZ_colour_by_casesPer100k-crop.png)
+
 ## List of Regions
 
 See the dashboard for the list of regions.
