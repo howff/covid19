@@ -7,6 +7,8 @@ import contextily as ctx
 import glob
 import sys
 import os
+import argparse
+import time
 
 city = 'Dundee City'
 data_dir = '../data'
@@ -16,9 +18,28 @@ figure_size = (30, 18)
 
 if len(sys.argv)>1:
 	city = sys.argv[1]
+parser = argparse.ArgumentParser(description='plot_city')
+parser.add_argument('-v', dest='verbose', action="store_true", help='verbose')
+parser.add_argument('--city', dest='city', action="store", help="City name, eg. Dundee City", default="")
+parser.add_argument('--data-dir', dest='data_dir', action="store", help="Path to directory of CSV files", default=data_dir)
+parser.add_argument('--shp-dir', dest='shp_dir', action="store", help="Path to directory of Shapefiles", default=shp_dir)
+parser.add_argument('--image-dir', dest='img_dir', action="store", help="Path to directory of image files", default=img_dir)
+args = parser.parse_args()
+if args.data_dir: data_dir = args.data_dir
+if args.shp_dir: shp_dir = args.shp_dir
+if args.img_dir: img_dir = args.img_dir
+if not args.city:
+	print('ERROR: must supply city name with --city')
+	exit(1)
+city = args.city
 
 # find the most recently dated csv in the data dir
-csv_file = glob.glob(f'../data/*_{city}.csv')[-1]
+try:
+	csv_file = sorted(glob.glob(f'{data_dir}/*_{city}.csv'))[-1]
+except:
+	print(f'ERROR: cannot find a csv file for {city} in {data_dir}')
+	exit(2)
+if args.verbose: print('Using %s' % csv_file)
 
 # Read the data file and the shapefile
 #   Per100k  Cases   Pop   IZ
@@ -49,7 +70,8 @@ ctx.add_basemap(ax) # zoom=12
 # Tidy up plot
 ax.set_axis_off()
 #add title to the map
-ax.set_title('Cases per 100k for last 7 days', fontdict={'fontsize':20})
+datestr = time.strftime('%Y-%m-%d',time.localtime())
+ax.set_title(f'Cases per 100k for last 7 days ({datestr})', fontdict={'fontsize':20})
 #move legend to an empty space
 #ax.get_legend().set_bbox_to_anchor((.12,.12))
 #ax.get_figure()
@@ -60,4 +82,5 @@ ax.set_title('Cases per 100k for last 7 days', fontdict={'fontsize':20})
 #plt.figure().set_tight_layout(True)
 #plt.figure().savefig('xx.png') #, bbox_inches="tight")
 plt.savefig(f'{img_dir}/{city}.png')
+if args.verbose: print('Wrote %s/%s.png' % (img_dir, city))
 

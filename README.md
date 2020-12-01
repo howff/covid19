@@ -18,6 +18,10 @@ Run `scripts/scrape_phs_covid.py` to scrape the data - three regions are defined
 
 * Split the shapefile of intermediate zones into separate files, one for each local authority
  using the `scripts/filter_iz_shapefile_to_city.sh` script (for all of them) or `scripts/filter_iz_shapefile_to_city.py` (for just a single one)
+* Use the `plot_city.py` script
+
+Or using QGIS
+
 * Load the shapefile of intermediate zones into QGIS
 * Load the CSV file as a vector layer
 * Open the properties of the shapefile layer and in the Join tab make a join with the CSV layer, using the IZ name as the join key
