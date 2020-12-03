@@ -30,7 +30,7 @@ Or using QGIS
 
 ## Example
 
-![Glasgow cases per 100k](images/glasgow_IZ_colour_by_casesPer100k-crop.png)
+![Glasgow cases per 100k](images/Glasgow_City.jpg)
 
 ## List of Regions
 
@@ -82,6 +82,8 @@ You are allowed to travel five miles from the boundary of your local authority.
 * Vector | Geoprocessing tools | Dissolve - to get a single shape
 * Change the shape to be transparent
 * As above use the OSM map underneath
+
+![Glasgow Five Miles](images/Five_miles_Glasgow.jpg)
 
 ## To do
 

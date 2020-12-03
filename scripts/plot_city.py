@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import pandas as pd             #used to read in the revenue file 
-import matplotlib.pyplot as plt #for plotting
+import pandas as pd
+import matplotlib.pyplot as plt
 import geopandas
 import contextily as ctx
 import glob
