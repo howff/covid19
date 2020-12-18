@@ -53,8 +53,8 @@ def parse_tooltip_html(ttt_html):
     neighbourhood = re.sub('^\s+', '', neighbourhood) # leading whitespace
     neighbourhood = re.sub('\s+$', '', neighbourhood) # trailing whitespace
     pop = int(re.sub('[\s,]+', '', pop))              # any spaces or comma
-    if cases == '1-4':
-        cases = '3'                                   # PHS fudges the numbers so guess at 3
+    if re.match('[01]-[234]', cases):                 # match 0-2 and 1-4 etc-
+        cases = '2'                                   # PHS fudges the numbers so guess at 2
     cases = int(re.sub('\s+', '', cases))             # any whitespace
     per100k = int(int(cases) * 100000 / int(pop))
     #print(f'{neighbourhood} {pop} {cases} {per100k}')
