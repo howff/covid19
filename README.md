@@ -34,6 +34,11 @@ Or using QGIS
 
 ## List of Regions
 
+The data about the Intermediate Zones can be downloaded from
+https://www.opendata.nhs.scot/dataset/geography-codes-and-labels/resource/e3e885cc-2530-4b3c-bead-9eda9782264f
+as a CSV file:
+https://www.opendata.nhs.scot/datastore/dump/e3e885cc-2530-4b3c-bead-9eda9782264f?bom=True
+
 * 'Aberdeen City'
 * 'Aberdeenshire'
 * 'Angus'
