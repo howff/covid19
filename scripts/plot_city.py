@@ -10,14 +10,14 @@ import os
 import argparse
 import time
 
-city = 'Dundee City'
+# Default values if you don't supply any arguments
 data_dir = '../data'
 shp_dir = '../shapefiles'
 img_dir = '../images'
 figure_size = (30, 18)
+verbose = False
 
-if len(sys.argv)>1:
-	city = sys.argv[1]
+# Argument parsing
 parser = argparse.ArgumentParser(description='plot_city')
 parser.add_argument('-v', dest='verbose', action="store_true", help='verbose')
 parser.add_argument('--city', dest='city', action="store", help="City name, eg. Dundee City", default="")
@@ -41,9 +41,11 @@ except:
 	exit(2)
 if args.verbose: print('Using %s' % csv_file)
 
-# Read the data file and the shapefile
+# Read the data file
 #   Per100k  Cases   Pop   IZ
 csv_dat = pd.read_csv(csv_file)
+
+# Read the shapefile
 #   InterZone  Name  TotPop2011  ResPop2011  HHCnt2011
 shp_df = geopandas.read_file(f'{shp_dir}/{city}_IZ.shp')
 
@@ -53,7 +55,6 @@ joined_df = shp_df.merge(csv_dat, left_on = 'Name', right_on = 'IZ')
 
 # Reproject to web Mercator
 joined_df = joined_df.to_crs(epsg=3857)
-
 
 # Plot the shapefile coloured by cases per 100k
 #  use df.dropna().plot() if you've got NA
