@@ -17,6 +17,9 @@ cities_list = [
     { "name": "Dundee City",         "num_iz":  31 },
     { "name": "Glasgow City",        "num_iz": 136 },
     { "name": "East Dunbartonshire", "num_iz":  28 },
+    { "name": "Angus",               "num_iz":  26 },
+    { "name": "Fife",                "num_iz":  105 },
+    { "name": "Perth and Kinross",   "num_iz":  105 },
 ]
 
 data_host = "https://public.tableau.com"
