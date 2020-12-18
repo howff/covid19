@@ -32,6 +32,24 @@ Or using QGIS
 
 ![Glasgow cases per 100k](images/Glasgow_City.jpg)
 
+## Five miles
+
+You are allowed to travel five miles from the boundary of your local authority.
+Create a map showing the boundary of each local authority extended by five miles.
+
+* Download the shapefiles (see below)
+* Use the `scripts/files_miles.py` script to create a map.
+
+To do it manually in QGIS:
+
+* Open the shapefile for your local authority (not whole Scotland!) in QGIS
+* Vector | Geoprocessing tools | Buffer - use 5 and select Miles
+* Vector | Geoprocessing tools | Dissolve - to get a single shape
+* Change the shape to be transparent
+* As above use the OSM map underneath
+
+![Glasgow Five Miles](images/Five_miles_Glasgow.jpg)
+
 ## List of Regions
 
 The data about the Intermediate Zones can be downloaded from
@@ -78,18 +96,8 @@ Download Intermediate Zone boundaries from
 
 https://www.opendata.nhs.scot/km/dataset/geography-codes-and-labels/resource/e3e885cc-2530-4b3c-bead-9eda9782264f?inner_span=True
 
-## Five miles
-
-You are allowed to travel five miles from the boundary of your local authority.
-
-* Open the shapefile for your local authority (not whole Scotland!) in QGIS
-* Vector | Geoprocessing tools | Buffer - use 5 and select Miles
-* Vector | Geoprocessing tools | Dissolve - to get a single shape
-* Change the shape to be transparent
-* As above use the OSM map underneath
-
-![Glasgow Five Miles](images/Five_miles_Glasgow.jpg)
-
 ## To do
 
-Turn the visualisation into a script, or even a streamlit web app
+* Try a streamlit web app
+* Make it interactive
+* Some of the zones in Perthshire are small relative to the size of the local authority so the numbers cannot be read
