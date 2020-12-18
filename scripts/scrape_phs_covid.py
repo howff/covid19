@@ -13,13 +13,14 @@ import logging, sys
 
 # Configuration:
 
+# The name must match the dropdown menu in the dashboard
 cities_list = [
     { "name": "Dundee City",         "num_iz":  31 },
     { "name": "Glasgow City",        "num_iz": 136 },
     { "name": "East Dunbartonshire", "num_iz":  28 },
     { "name": "Angus",               "num_iz":  26 },
-    { "name": "Fife",                "num_iz":  105 },
-    { "name": "Perth and Kinross",   "num_iz":  105 },
+    { "name": "Fife",                "num_iz":  104 },
+    { "name": "Perth & Kinross",     "num_iz":  35 } # NB note use of & not 'and'
 ]
 
 data_host = "https://public.tableau.com"
@@ -30,7 +31,7 @@ date_str = time.strftime('%Y%m%d')
 # ---------------------------------------------------------------------
 # Log to stderr
 
-logging.basicConfig(stream=sys.stderr) # level=logging.DEBUG
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 log = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------
@@ -112,9 +113,10 @@ data = []
 for city in cities_list:
     city_name = city['name']
     num_iz = city['num_iz']
-    log.debug(f'CITY {city_name} getting {num_iz} zones')
+    csv_name = f'{date_str}_{city_name}.csv'.replace('&', 'and')
+    log.info(f'CITY {city_name} getting {num_iz} zones into {csv_name}')
     # Create CSV file
-    csv_fd = open(f'{date_str}_{city_name}.csv', 'w')
+    csv_fd = open(csv_name, 'w')
     csv_fd.write('Per100k,Cases,Pop,IZ\n')
 
     change_region(city_name)
