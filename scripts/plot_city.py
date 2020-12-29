@@ -46,8 +46,16 @@ if args.verbose: print('Using %s' % csv_file)
 csv_dat = pd.read_csv(csv_file)
 
 # Read the shapefile
-#   InterZone  Name  TotPop2011  ResPop2011  HHCnt2011
-shp_df = geopandas.read_file(f'{shp_dir}/{city}_IZ.shp')
+#   InterZone  Name  TotPop2011  ResPop2011  HHCnt2011  ...  geometry
+#shp_df = geopandas.read_file(f'{shp_dir}/{city}_IZ.shp')
+shp_df = geopandas.read_file(f'{shp_dir}/SG_IntermediateZone_Bdry_2011.shp')
+# Read the list of intermediate zones
+# Get a list of IntZone for the requested city
+#  IntZone where CAName == city name
+iz_df = pd.read_csv(f'{data_dir}/IntermediateZones.csv')
+iz_list = iz_df[iz_df['CAName'] == city]['IntZone'].tolist()
+# Now filter shapefiles to the requested region
+shp_df = shp_df.loc[shp_df['InterZone'].isin(iz_list)]
 
 # Join the two on a common column
 joined_df = shp_df.merge(csv_dat, left_on = 'Name', right_on = 'IZ')
