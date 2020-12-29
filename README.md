@@ -9,7 +9,7 @@ sudo apt install imagemagick
 cd scripts
 virtualenv -p /usr/bin/python3 env
 source env/bin/activate
-python3 -m pip install pandas geopandas matplotlib contextily bs4
+python3 -m pip install pandas geopandas matplotlib contextily mapclassify descartes bs4
 ```
 
 ## Scrape data from the Public Health Scotland dashboard
