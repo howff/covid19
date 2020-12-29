@@ -39,8 +39,8 @@ log = logging.getLogger(__name__)
 
 def parse_tooltip_html(ttt_html):
     soup = BeautifulSoup(ttt_html, "html.parser")
-    with open('j.html', 'w') as fd:
-        fd.write(ttt_html)
+    #with open('j.html', 'w') as fd:
+    #    fd.write(ttt_html)
 
     nei_soup = soup.find('span', text='Neighbourhood: ')
     if nei_soup:
