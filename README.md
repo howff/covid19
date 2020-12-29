@@ -5,6 +5,7 @@ Experiments in plotting Covid-19 data
 ## Requirements
 
 ```
+sudo apt install imagemagick
 cd scripts
 virtualenv -p /usr/bin/python3 env
 source env/bin/activate
