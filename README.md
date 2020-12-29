@@ -2,6 +2,15 @@
 
 Experiments in plotting Covid-19 data
 
+## Requirements
+
+```
+cd scripts
+virtualenv -p /usr/bin/python3 env
+source env/bin/activate
+python3 -m pip install pandas geopandas matplotlib contextily bs4
+```
+
 ## Scrape data from the Public Health Scotland dashboard
 
 The PHS dashboard:
@@ -94,10 +103,13 @@ https://www.opendata.nhs.scot/datastore/dump/e3e885cc-2530-4b3c-bead-9eda9782264
 
 Download Intermediate Zone boundaries from
 
-https://www.opendata.nhs.scot/km/dataset/geography-codes-and-labels/resource/e3e885cc-2530-4b3c-bead-9eda9782264f?inner_span=True
+https://www.spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/metadata/389787c0-697d-4824-9ca9-9ce8cb79d6f5
+as a Shapefile:
+http://sedsh127.sedsh.gov.uk/Atom_data/ScotGov/ZippedShapefiles/SG_IntermediateZoneBdry_2011.zip
 
 ## To do
 
 * Try a streamlit web app
 * Make it interactive
-* Some of the zones in Perthshire are small relative to the size of the local authority so the numbers cannot be read
+* Some of the zones in Perthshire are small relative to the size of the local authority so the numbers cannot be read.
+
